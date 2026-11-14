@@ -1,0 +1,274 @@
+/* =========================
+   MENU PAGE — forget-me-not theme
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Expressway';
+  src: url('../fonts/expressway_regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Internet';
+  src: url('../fonts/lt_internet_regular.ttf') format('truetype');
+  font-weight: 400;
+  /* normal */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Internet';
+  src: url('../fonts/lt_internet_bold.ttf') format('truetype');
+  font-weight: 700;
+  /* bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AngelicPearl';
+  src: url('../fonts/angelicpearl_regular.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  font-family: 'Internet';
+  background: linear-gradient(180deg, #F4FAFF 0%, #CDE4F7 55%, #A7C9EC 100%);
+}
+
+.menuPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.menuPage h1 {
+  margin: 0;
+  font-size: 68px;
+  font-weight: 900;
+  color: #1F3A5F;
+  text-align: center;
+  z-index: 10;
+  animation: fadeIn 2s ease;
+}
+
+/* ---- floating forget-me-nots ---- */
+.flower {
+  position: absolute;
+  width: 64px;
+  opacity: .55;
+  pointer-events: none;
+  z-index: 1;
+  animation: floaty 6s ease-in-out infinite;
+}
+
+.f1 {
+  top: 12%;
+  left: 30%;
+  width: 50px;
+}
+
+.f2 {
+  top: 30%;
+  right: 32%;
+  width: 70px;
+  animation-delay: 1.5s;
+}
+
+.f3 {
+  bottom: 24%;
+  right: 16%;
+  width: 56px;
+  animation-delay: 3s;
+}
+
+.f4 {
+  bottom: 14%;
+  left: 40%;
+  width: 44px;
+  animation-delay: 2s;
+}
+
+@keyframes floaty {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(12deg);
+  }
+}
+
+/* ---- menu buttons ---- */
+.menuBtn {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 3px solid rgba(47, 94, 147, .35);
+  background: white;
+  font-size: 72px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 30px rgba(47, 94, 147, .16);
+  transition: all .4s cubic-bezier(.34, 1.56, .64, 1);
+  position: absolute;
+  animation: popInRotate 1s ease backwards;
+  z-index: 5;
+}
+
+.menuBtn__icon {
+  width: 62%;
+  height: 62%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  transition: transform .3s ease;
+}
+
+.menuBtn--letter {
+  top: 16%;
+  left: 9%;
+  transform: rotate(-12deg);
+  animation-delay: 1.5s;
+}
+
+.menuBtn--song {
+  top: 22%;
+  right: 11%;
+  transform: rotate(14deg);
+  animation-delay: 1.8s;
+}
+
+.menuBtn--collage {
+  bottom: 16%;
+  left: 24%;
+  transform: rotate(-8deg);
+  animation-delay: 2.1s;
+}
+
+@keyframes popInRotate {
+  from {
+    opacity: 0;
+    transform: scale(.3) rotate(0deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(inherit);
+  }
+}
+
+.menuBtn:hover {
+  background: #FFF3C4;
+  transform: scale(1.15) rotate(0deg) !important;
+  box-shadow: 0 0 18px rgba(74, 134, 200, .55);
+  z-index: 20;
+}
+
+.menuBtn:hover .menuBtn__icon {
+  transform: scale(1.08);
+}
+
+.retryLink {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 18px 40px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: inherit;
+  color: #2F5E93;
+  background: #fff;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(47, 94, 147, 0.22);
+  transition: all 0.3s ease;
+  animation: fadeInCenter 2s ease;
+  animation-delay: 1s;
+  animation-fill-mode: backwards;
+}
+
+.retryLink:hover {
+  background: #FFF3C4;
+  transform: translateX(-50%) scale(1.12);
+  box-shadow: 0 12px 32px rgba(47, 94, 147, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* keeps the fixed button centered while it fades in */
+@keyframes fadeInCenter {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .menuPage {
+    padding: 48px 32px;
+  }
+
+  .menuPage h1 {
+    font-size: 40px;
+  }
+
+  .menuBtn {
+    width: 120px;
+    height: 120px;
+    font-size: 56px;
+  }
+
+  .menuBtn--letter {
+    top: 12%;
+    left: 5%;
+    transform: rotate(-8deg);
+  }
+
+  .menuBtn--song {
+    top: 15%;
+    right: 8%;
+    transform: rotate(10deg);
+  }
+
+  .menuBtn--collage {
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%) rotate(-5deg);
+  }
+
+  .retryLink {
+    bottom: 10px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    font-size: 20px;
+  }
+}

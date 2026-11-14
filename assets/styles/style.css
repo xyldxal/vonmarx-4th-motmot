@@ -1,0 +1,482 @@
+/* =========================
+   FORGET-ME-NOT THEME
+   blue + yellow palette
+========================= */
+:root {
+  --ink: #002642;
+  /* deep navy text */
+  --ink-soft: #5A7BA0;
+  /* muted blue text */
+  --blue: #4A86C8;
+  /* forget-me-not petal blue */
+  --blue-deep: #2F5E93;
+  --petal: #bfb0fb;
+  --yellow: #F6C445;
+  /* forget-me-not center */
+  --yellow-deep: #E0A800;
+  --panel: #EAF3FB;
+  --panel-strong: #CDE4F7;
+}
+
+/* =========================
+  FONTS
+========================= */
+@font-face {
+  font-family: 'Expressway';
+  src: url('../fonts/expressway_regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LTInternet';
+  src: url('../fonts/lt_internet_regular.ttf') format('truetype');
+  font-weight: 400;
+  /* normal */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LTInternet';
+  src: url('../fonts/lt_internet_bold.ttf') format('truetype');
+  font-weight: 700;
+  /* bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Metsuri';
+  src: url('../fonts/metsuri_regular.ttf') format('truetype');
+  font-style: normal;
+}
+
+
+/* =========================
+   GLOBAL
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(180deg, #F4FAFF 0%, #CDE4F7 55%, #A7C9EC 100%);
+}
+
+/* =========================
+   SPLIT LAYOUT
+========================= */
+.split {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* =========================
+   LEFT SIDE
+========================= */
+.left {
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+  background: transparent;
+  padding: 80px 64px 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+/* the painting sits on top of the left panel and bleeds over the seam */
+.painting {
+  position: absolute;
+  top: 0;
+  left: -48px;
+  width: calc(100% + 112px);
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+
+/* keep the text readable over the painting (warm yellow glow) */
+.left .leftText h1,
+.left .leftText .sub {
+  color: var(--petal);
+  text-shadow: 3.5px 3.5px 2px rgb(13, 3, 55), 3.5px 4.5px 10px rgba(238, 235, 136, 0.634);
+}
+
+.leftText {
+  position: relative;
+  z-index: 2;
+  width: min(820px, 100%);
+  text-align: center;
+  font-family: 'Expressway';
+}
+
+.leftText h1 {
+  margin: 0 0 12px;
+  font-family: 'LTInternet';
+  font-size: 75px;
+  line-height: 0.75;
+  font-weight: 1000;
+  letter-spacing: 2px;
+}
+
+.leftText .sub {
+  margin: 0;
+  font-size: 30px;
+  opacity: .65;
+}
+
+/* ---- bottom-left reference link ---- */
+.referenceLink {
+  position: absolute;
+  bottom: 14px;
+  left: 18px;
+  z-index: 5;
+  font-family: 'Expressway', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  letter-spacing: 0.4px;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.referenceLink:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  opacity: 1;
+}
+
+/* =========================
+   RIGHT SIDE
+========================= */
+.right {
+  color: var(--ink);
+  position: relative;
+  z-index: 1;
+  background: var(--panel-strong);
+  padding: 72px 64px;
+  overflow: hidden;
+
+  display: grid;
+  place-items: center;
+}
+
+/* ---- floating forget-me-nots ---- */
+.flower {
+  position: absolute;
+  width: 64px;
+  opacity: .55;
+  pointer-events: none;
+  z-index: 1;
+  animation: floaty 5s ease-in-out infinite;
+}
+
+.right .f1 {
+  top: 8%;
+  left: 12%;
+  width: 52px;
+}
+
+.right .f2 {
+  top: 14%;
+  right: 10%;
+  width: 95px;
+  /* 40% bigger (was 68px) */
+  animation-delay: 0.6s;
+}
+
+.right .f3 {
+  top: 40%;
+  left: 6%;
+  width: 44px;
+  animation-delay: 1.1s;
+}
+
+.right .f4 {
+  top: 46%;
+  right: 8%;
+  width: 58px;
+  animation-delay: 0.4s;
+}
+
+.right .f5 {
+  bottom: 14%;
+  left: 14%;
+  width: 87px;
+  /* 40% bigger (was 62px) */
+  animation-delay: 1.4s;
+}
+
+.right .f6 {
+  bottom: 18%;
+  right: 14%;
+  width: 46px;
+  animation-delay: 0.8s;
+}
+
+.right .f7 {
+  top: 25%;
+  left: 22%;
+  width: 38px;
+  animation-delay: 1.7s;
+}
+
+.right .f8 {
+  bottom: 8%;
+  right: 26%;
+  width: 50px;
+  animation-delay: 1.2s;
+}
+
+@keyframes floaty {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(12deg);
+  }
+}
+
+.lock {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 440px;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+
+.question {
+  font-family: 'LTInternet';
+  font-size: 50px;
+  font-weight: 1000;
+  color: var(--ink);
+  text-align: center;
+}
+
+.answerInput {
+  width: 100%;
+  max-width: 400px;
+  height: 64px;
+  border-radius: 32px;
+  border: 3px solid rgba(47, 94, 147, .35);
+  background: #FFF9E6;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'Expressway';
+  color: var(--ink);
+  text-align: center;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
+.answerInput::placeholder {
+  color: #A3B5C9;
+  font-weight: 300;
+}
+
+.answerInput:focus {
+  border-color: var(--blue);
+  background: #FFFDF4;
+  box-shadow: 0 0 0 6px rgba(74, 134, 200, .18);
+}
+
+.hint {
+  margin: 0;
+  font-size: 15px;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+/* =========================
+   UNLOCK BUTTON
+========================= */
+.enterBtn {
+  display: block;
+  margin: 10px auto 0;
+  width: 220px;
+  height: 64px;
+
+  background-color: var(--blue);
+  border-radius: 32px;
+  border: none;
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
+  color: #ffffff;
+
+  font-family: 'LTInternet';
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: .6px;
+
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, background .2s ease, outline-color .2s ease;
+}
+
+.enterBtn:hover {
+  background: var(--blue-deep);
+  outline-color: var(--yellow-deep);
+  box-shadow: 0 0 16px rgba(74, 134, 200, .55);
+  transform: scale(1.06);
+}
+
+.enterBtn:active {
+  transform: translateY(3px);
+}
+
+/* =========================
+   WRONG PAGE
+========================= */
+.retryLink {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 18px 40px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: inherit;
+  color: var(--blue-deep);
+  background: #fff;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(47, 94, 147, 0.22);
+  transition: all 0.3s ease;
+  animation: retryFadeIn 0.6s ease 1.2s both;
+}
+
+.retryLink:hover {
+  background: #FFF3C4;
+  transform: scale(1.12);
+  box-shadow: 0 12px 32px rgba(47, 94, 147, 0.3);
+  text-decoration: none;
+}
+
+@keyframes retryFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.sub1 {
+  font-size: 32px;
+  font-weight: 700;
+  opacity: .75;
+  margin-top: 6px;
+}
+
+.gifBox_wrong {
+  width: 320px;
+  border-radius: 2.5%;
+  overflow: hidden;
+
+  display: grid;
+  place-items: center;
+
+  box-shadow: 0 18px 40px rgba(47, 94, 147, .18);
+}
+
+.gifBox_wrong img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+.floatIn {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: floatInAnim .6s ease forwards;
+}
+
+.sub1.floatIn {
+  animation-fill-mode: forwards;
+  animation-name: floatInSub;
+}
+
+@keyframes floatInSub {
+  to {
+    opacity: .75;
+    transform: translateY(0);
+  }
+}
+
+.titleAnimation {
+  animation-delay: .15s;
+}
+
+.subAnimation {
+  animation-delay: 1.2s;
+}
+
+.linkAnimation {
+  animation-delay: 2s;
+}
+
+@keyframes floatInAnim {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE (MOBILE)
+========================= */
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .left,
+  .right {
+    padding: 48px 28px;
+  }
+
+  .left {
+    min-height: 60vh;
+  }
+
+  .gifBox {
+    width: min(300px, 78vw);
+    height: min(300px, 78vw);
+  }
+
+  .leftText h1 {
+    font-size: 34px;
+  }
+
+  .leftText .sub {
+    font-size: 18px;
+  }
+
+  .question {
+    font-size: 26px;
+  }
+
+  .answerInput {
+    height: 56px;
+    font-size: 20px;
+  }
+}

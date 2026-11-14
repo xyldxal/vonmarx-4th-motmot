@@ -1,0 +1,513 @@
+/* ===========================
+   COLLAGE PAGE — forget-me-not theme
+=========================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'LTInternet';
+    background: linear-gradient(180deg, #F4FAFF 0%, #CDE4F7 50%, #9CC4EC 100%);
+    min-height: 100vh;
+    padding: 80px 32px 64px;
+    color: #1F3A5F;
+}
+
+@font-face {
+    font-family: 'Expressway';
+    src: url('../fonts/expressway_regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'LTInternet';
+    src: url('../fonts/lt_internet_regular.ttf') format('truetype');
+    font-weight: 400;
+    /* normal */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LTInternet';
+    src: url('../fonts/lt_internet_bold.ttf') format('truetype');
+    font-weight: 700;
+    /* bold */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Metsuri';
+    src: url('../fonts/metsuri_regular.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AngelicPearl';
+    src: url('../fonts/angelicpearl_regular.ttf') format('truetype');
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.header {
+    text-align: center;
+    margin-bottom: 80px;
+    margin-left: 100px;
+    animation: fadeDown 2s ease;
+}
+
+.header h1 {
+    font-family: "AngelicPearl";
+    font-size: 72px;
+    font-weight: 300;
+    color: #1F3A5F;
+}
+
+.header p {
+    font-family: 'LTInternet';
+    font-size: 15px;
+    color: #2F5E93;
+    margin-top: 8px;
+    margin-right: 100px;
+    animation: fadeDown 1s ease;
+    animation-delay: 2s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---- scattered forget-me-nots ---- */
+.flowerImg {
+    position: absolute;
+    top: 300px;
+    left: 20px;
+    width: 90px;
+    rotate: -15deg;
+    opacity: .5;
+}
+
+.flowerImg1 {
+    position: absolute;
+    top: 500px;
+    right: 20px;
+    width: 90px;
+    rotate: 15deg;
+    opacity: .5;
+}
+
+.flowerImg2 {
+    position: absolute;
+    top: 750px;
+    left: 20px;
+    width: 90px;
+    rotate: -30deg;
+    opacity: .5;
+}
+
+.flowerImg3 {
+    position: absolute;
+    top: 950px;
+    right: 20px;
+    width: 90px;
+    rotate: 40deg;
+    opacity: .5;
+}
+
+/* unused decorations — hidden */
+.flowerImg4,
+.flowerImg5 {
+    display: none;
+}
+
+/* ===========================
+   BOARD
+=========================== */
+
+.board {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-left: 10%;
+    height: 860px;
+    /* 2 rows fit neatly */
+}
+
+/* ===========================
+   PHOTOS
+=========================== */
+
+.photo {
+    background: white;
+    padding: 12px 12px 52px;
+    box-shadow: 0 4px 16px rgba(47, 94, 147, .16);
+    position: absolute;
+    width: 320px;
+    transition: all .4s cubic-bezier(.34, 1.56, .64, 1);
+    animation: popIn .8s ease backwards;
+    animation-delay: .2s;
+    cursor: pointer;
+    will-change: transform;
+}
+
+.photo:hover {
+    transform: rotate(0deg) scale(1.12) translateY(-8px) !important;
+    box-shadow: 0 12px 30px rgba(47, 94, 147, .5);
+    z-index: 20;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(.5);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.photo-img {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #CDE4F7 0%, #9CC4EC 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    overflow: hidden;
+}
+
+.photo-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-caption {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 12px 12px;
+    font-family: 'LTInternet';
+    font-size: 20px;
+    color: #2F5E93;
+}
+
+/* Hidden on main board, revealed upon zoom */
+.inner-caption {
+    display: none;
+}
+
+/* ===========================
+   PHOTO POSITIONS  (8 photos, 2 rows × 4)
+   Board width ≈ 1400px → columns at ~0%, 24%, 49%, 73%
+   Row spacing: ~420px apart (photo height ~370px + gap)
+=========================== */
+
+/* ── Row 1 ── */
+.p1 {
+    top: 0px;
+    left: 0%;
+    transform: rotate(-4deg);
+    animation-delay: 3.5s;
+}
+
+.p2 {
+    top: 24px;
+    left: 24%;
+    transform: rotate(3deg);
+    animation-delay: 3.8s;
+}
+
+.p3 {
+    top: 0px;
+    left: 49%;
+    transform: rotate(-2deg);
+    animation-delay: 4.1s;
+}
+
+.p4 {
+    top: 18px;
+    left: 73%;
+    transform: rotate(5deg);
+    animation-delay: 4.4s;
+}
+
+/* ── Row 2 ── */
+.p5 {
+    top: 420px;
+    left: 2%;
+    transform: rotate(4deg);
+    animation-delay: 4.7s;
+}
+
+.p6 {
+    top: 440px;
+    left: 26%;
+    transform: rotate(-3deg);
+    animation-delay: 5.0s;
+}
+
+.p7 {
+    top: 410px;
+    left: 51%;
+    transform: rotate(2deg);
+    animation-delay: 5.3s;
+}
+
+.p8 {
+    top: 430px;
+    left: 75%;
+    transform: rotate(-5deg);
+    animation-delay: 5.6s;
+}
+
+/* ===========================
+   BACK BUTTON
+=========================== */
+
+.backBtn {
+    font-family: 'LTInternet';
+    display: block;
+    max-width: 280px;
+    margin: 80px auto 0;
+    padding: 18px 40px;
+    background: #fff;
+    color: #2F5E93;
+    text-decoration: none;
+    border-radius: 32px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    transition: all .3s ease;
+    box-shadow: 0 8px 24px rgba(47, 94, 147, .22);
+}
+
+.backBtn:hover {
+    background: #FFF3C4;
+    transform: scale(1.12);
+    box-shadow: 0 12px 32px rgba(47, 94, 147, .3);
+}
+
+/* ===========================
+   LIGHTBOX
+=========================== */
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(12, 28, 48, .85);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn .2s ease;
+    padding: 24px;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Picture on left, text on right */
+.lightbox-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    max-width: min(1300px, 94vw);
+    max-height: 88vh;
+    animation: zoomIn .25s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, .55);
+}
+
+/* When text is present, cap the image width so both fit comfortably side-by-side */
+.lightbox-content.has-text .lightbox-img {
+    max-width: min(58vw, 750px);
+    max-height: 82vh;
+}
+
+.lightbox-text {
+    max-width: 460px;
+    width: 100%;
+    max-height: 75vh;
+    overflow-y: auto;
+    font-family: 'LTInternet', sans-serif;
+    font-size: 20px;
+    line-height: 1.75;
+    color: #F4FAFF;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    scrollbar-width: thin;
+    text-align: justify;
+}
+
+
+.lightbox-text p {
+    margin: 0 0 16px;
+}
+
+
+.lightbox-text p:last-child {
+    margin-bottom: 0;
+}
+
+
+@media (max-width: 768px) {
+    .lightbox-content {
+        flex-direction: column;
+        gap: 20px;
+        overflow-y: auto;
+    }
+
+    .lightbox-content.has-text .lightbox-img {
+        max-width: 90vw;
+        max-height: 55vh;
+    }
+
+    .lightbox-text {
+        text-align: center;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(.7);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 20px;
+    left: 24px;
+    background: rgba(255, 255, 255, .7);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+    transition: all .2s ease;
+    color: #1F3A5F;
+    z-index: 1001;
+}
+
+.lightbox-close:hover {
+    background: #FFF3C4;
+    transform: scale(1.12);
+}
+
+/* ===========================
+   RESPONSIVE (MOBILE)
+=========================== */
+
+@media (max-width: 800px) {
+    body {
+        padding: 40px 20px 60px;
+    }
+
+    .header {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .header h1 {
+        font-size: 48px;
+    }
+
+    .header p {
+        margin-right: 0;
+    }
+
+    .flowerImg,
+    .flowerImg1,
+    .flowerImg2,
+    .flowerImg3,
+    .flowerImg4,
+    .flowerImg5 {
+        display: none;
+    }
+
+    .board {
+        height: auto;
+        position: static;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+        margin-left: 0;
+    }
+
+    .photo {
+        position: static !important;
+        width: 100%;
+        max-width: 300px;
+        transform: none !important;
+    }
+
+    .videoCard {
+        position: static !important;
+        width: 100%;
+        max-width: 360px;
+        transform: none !important;
+    }
+
+    .backBtn {
+        margin-top: 60px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .board {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
